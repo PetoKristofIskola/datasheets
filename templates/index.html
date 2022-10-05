@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Logic Ic datasheets</title>
+    <link rel="icon" href="../static/assets/icon.png">
+    <link rel="stylesheet" type="text/css" href="../static/assets/style.css">
+</head>
+<body>
+    <p class="button" onclick="showUploadForm()">Upload</p>
+
+    <dialog id="uploadDialog">
+
+        <form id="uploadForm" action="/api/upload" method="post" enctype="multipart/form-data">
+            <label for="icon">Icon*: </label>
+            <input type="file" name="icon" id="icon" accept="image/*">
+            <br>
+            <label for="pdf">PDF*: </label>
+            <input type="file" name="pdf" id="pdf">
+            <br>
+            <input type="text" autocomplete="none" id="title" name="title" placeholder="Title">
+            <br>
+            <input type="text" autocomplete="none" id="subtitle" name="subtitle" placeholder="Subtitle">
+            <br>
+            <textarea name="desc" id="desc" cols="40" rows="10" placeholder="Description"></textarea>
+        </form>
+
+        <button onclick="hideUploadForm()">Close</button><button onclick="submitUploadForm()">Upload</button>
+    </dialog>
+
+    
+    <script>
+        function showUploadForm(){
+            document.getElementById("uploadDialog").showModal()
+        }
+
+        function hideUploadForm(){
+            document.getElementById("uploadDialog").close()
+        }
+
+        function submitUploadForm(){
+            document.getElementById("uploadForm").submit()
+        }
+    </script>
+
+    {%for i in sheets%}
+    <div class="element">
+        <div class="desc">
+            <h1>{{i.title}}</h1>
+            <h2>{{i.subtitle}}</h2>
+            <p>{{i.desc}}</p>
+        </div>
+        <div class="image">
+            <img src="{{i.basePath}}{{i.imgName}}">
+        </div>
+        <a class="fullds" href="{{i.basePath}}{{i.pdfName}}">Full datasheet<img src="../static/assets/icon.png"></a>
+    </div>
+    {%endfor%}
+
+    <div id="footer" style="margin-top: 200px;">
+        <p style="float: left;"><div class="petokrisa">PetoKrisa</div> Webpage by <span class="mauminimus">mauminimus</span></p>
+        <p style="float: right;">Main sources: <a target="blank" style="color: #24a0ed; text-decoration: none; margin-right: 10px;" href="https://pdf360.com">Datasheets360.com</a><a target="blank" style="color: #24a0ed; text-decoration: none;" href="https://www.hqelektronika.hu/hu/">HQelektronika.hu</a></p>
+    </div>
+</body>
+</html>
+
+
+<!--
+
+    <div class="element">
+        <div class="desc">
+            <h1></h1>
+            <h2></h2>
+            <p></p>
+        </div>
+        <div class="image">
+            <img src="images/">
+        </div>
+        <a class="fullds" href="pdf/">Full datasheet<img src="icon.png"></a>
+    </div>
+
+-->
