@@ -112,6 +112,7 @@ p {
     cursor: default;
     user-select: none;
     -webkit-user-drag: none;
+    margin: 20px 0px;
     margin-left: 5px;
     color: rgb(160, 160, 160);
     width: 0px;
