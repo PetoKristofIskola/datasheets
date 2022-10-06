@@ -1,10 +1,10 @@
 ## PIP packages requred
--flask
-
--flask-admin
-
--flask-sqlalchemy
-
 ```
-pip install <package_name>
+pip install flask
+```
+```
+pip install flask-admin
+```
+```
+pip install flask-sqlalchemy
 ```

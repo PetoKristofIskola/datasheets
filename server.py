@@ -37,7 +37,9 @@ class Datasheets(db.Model):
     
     def __repr__(self):
         return f'{self.id}; {self.title}'
-    
+
+with app.app_context():
+    db.create_all()
 #admin panel
 
 admin.add_view(ModelView(Datasheets, db.session))
@@ -53,6 +55,12 @@ def showIp():
 def index():
     sheets = db.session.query(Datasheets).all()
     return render_template('index.html', serach=False, sheets=sheets)
+
+@app.route('/search')
+def search():
+    squery = request.args["q"]
+    sheets = db.session.query(Datasheets).filter(or_(Datasheets.title.contains(squery), Datasheets.subtitle.contains(squery))).all()
+    return render_template('index.html', search=True, sheets=sheets, squery=squery)
 
 @app.route('/api/upload', methods=["POST", "GET"])
 def upload():
@@ -92,5 +100,4 @@ def handle_context():
 
 
 if __name__ == '__main__':
-    db.create_all()
-    app.run(host='0.0.0.0', port=80, debug=True)
+    app.run(host='0.0.0.0', port=6969, debug=True)

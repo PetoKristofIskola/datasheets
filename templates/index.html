@@ -7,18 +7,32 @@
     <link rel="stylesheet" type="text/css" href="../static/assets/style.css">
 </head>
 <body>
-    <p class="button" onclick="showUploadForm()">Upload</p>
+    <br>
+    <br>
+    <p class="button" onclick="showUploadForm()" tabindex="1">Upload</p>
+    <a class="button secret" href="#" tabindex="2">Secret</a>
+
+    <form action="/search" id="search">
+        <input type="text" placeholder="Search" name="q" autocomplete="on">
+        <button>Search</button>
+    </form>
+    {%if search%}
+    <br>
+    <br>
+    <p style="text-align: center;">{{squery}}<a href="/" class="searchx">x</a></p>
+    {%endif%}
+
 
     <dialog id="uploadDialog">
 
         <form id="uploadForm" action="/api/upload" method="post" enctype="multipart/form-data">
             <label for="icon">Icon*: </label>
-            <input type="file" name="icon" id="icon" accept="image/*">
+            <input type="file" name="icon" id="icon" accept="image/*" required>
             <br>
             <label for="pdf">PDF*: </label>
-            <input type="file" name="pdf" id="pdf">
+            <input type="file" name="pdf" id="pdf" reqired>
             <br>
-            <input type="text" autocomplete="none" id="title" name="title" placeholder="Title">
+            <input type="text" autocomplete="none" id="title" name="title" placeholder="Title*" required>
             <br>
             <input type="text" autocomplete="none" id="subtitle" name="subtitle" placeholder="Subtitle">
             <br>
@@ -39,7 +53,15 @@
         }
 
         function submitUploadForm(){
-            document.getElementById("uploadForm").submit()
+            icon = document.getElementById("icon").value != ""
+            pdf = document.getElementById("pdf").value != ""
+            title = document.getElementById("title").value != ""
+            if (icon && pdf && title){
+                document.getElementById("uploadForm").submit()
+            } else{
+                alert("Some required fields are empty!")
+            }
+            
         }
     </script>
 

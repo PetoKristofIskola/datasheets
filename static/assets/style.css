@@ -85,10 +85,11 @@ p {
 
 .petokrisa{
     font-family: "Brush Script MT";
+    font-weight: bold;
     font-size: 20pt;
     max-width: 150px;
 
-    color: rgba(43, 255, 0, 0.8);
+    color: rgba(43, 255, 0, 1);
 
     transform: rotate(14deg);
 
@@ -102,6 +103,26 @@ p {
     font-weight: bold;
     cursor: pointer;
     max-width: fit-content;
+    float: left;
+}
+
+.secret{
+    opacity: 0;
+    z-index: -999;
+    cursor: default;
+    user-select: none;
+    -webkit-user-drag: none;
+    margin-left: 5px;
+    color: rgb(160, 160, 160);
+    width: 0px;
+    height: 0px;
+    overflow: hidden;
+}
+.secret:focus{
+    opacity: 1;
+    z-index: 999;
+    width: auto;
+    height: auto;
 }
 
 button, ::-webkit-file-upload-button{
@@ -131,4 +152,22 @@ input, textarea{
     font-size: larger;
     margin: 4px;
     width: 90%;
+}
+
+#search{
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: flex;
+    flex-direction: row;
+}
+
+.searchx{
+    color: rgb(160, 160, 160);
+    text-decoration: none;
+    text-align: center;
+    margin: auto;
+    padding-left: 10px;
 }
