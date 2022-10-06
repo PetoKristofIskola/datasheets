@@ -2,7 +2,14 @@
     font-family: roboto;
     src: url(../assets/Roboto-Regular.ttf);
   }
-  
+
+html,body{
+    width: 90vw;
+    height: 100vh;
+    padding: 0px;
+    margin: 0px;
+}
+
 body {
     padding: 20px 100px;
     background-color: #333231;
@@ -171,4 +178,11 @@ input, textarea{
     text-align: center;
     margin: auto;
     padding-left: 10px;
+}
+
+iframe{
+    border: none;
+    object-fit: contain;
+    width: 50vw;
+    height: 40vh;
 }
