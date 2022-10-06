@@ -4,7 +4,7 @@
   }
 
 html,body{
-    width: 90vw;
+    width: 85vw;
     height: 100vh;
     padding: 0px;
     margin: 0px;
@@ -60,7 +60,7 @@ p {
     margin-left: 30px;
 }
 
-.image img {
+.image img, iframe{
     max-width: 600px;
     float: left;
     margin-right: 30px;
@@ -77,7 +77,7 @@ p {
     border-radius: 15px;
 }
 
-.fullds img {
+.fullds img, .fullds iframe {
     width: 40px;
     float: right;
     margin-top: -12px;
@@ -185,4 +185,18 @@ iframe{
     object-fit: contain;
     width: 50vw;
     height: 40vh;
+}
+
+@media(max-width:900px){
+    dialog{
+        width: 100vw;
+    }
+
+    body{
+        overflow-x: hidden;
+    }
+
+    .element{
+        max-width: 90vw !important;
+    }
 }
