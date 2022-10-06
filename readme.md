@@ -1,4 +1,4 @@
-## PIP packages requred
+## PIP packages required
 ```
 pip install flask
 ```
